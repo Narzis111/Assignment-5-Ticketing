@@ -1,17 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-10..0,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
-.inter{
-  font-family: "Inter", sans-serif;
-}
 
-.railway{
-  font-family: "Raleway", sans-serif;
-}
-
-.bgimg{
+/* .bgimg{
   background:linear-gradient(0deg,#0000004D,#ffffff1A),url('images/banner.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   object-fit: cover;
-}
+} */

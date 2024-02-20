@@ -1,77 +1,55 @@
-let totalSet = 40;
-let ticket = 0;
-let totalTicketPrice = 0;
-const arr = [];
-const couponInput = getID("coupon_input");
-const couponBtn = getID("coupon_btn");
-
-// document.getElementById
-function getID(id) {
-  return document.getElementById(id);
-}
-
-// How many seat available in Bus.
+let count = 0;
+let totalSeat = 40;
 function seatRemaining() {
-  const seatsLeft = getID("seats-left");
-  totalSet--;
-  seatsLeft.innerText = totalSet;
+  const seatRemaining = document.getElementById("seat-left");
+  totalSeat -= 1;
+  seatRemaining.innerText = totalSeat;
 }
 
-// Ticket Unit create Function.
-function ticketUnit() {
-  const unit = getID("ticket-unit");
-  ticket++;
-  unit.innerText = ticket;
-}
 
-// create Ticket Unit Append Child in Card
-function additionFieldInCard(seat) {
-  const cardSection = getID("card_section");
-  const createDiv = document.createElement("div");
-  createDiv.innerHTML = `
-  <p class="text-lg">${seat.innerText}</p>
-  <p class="text-lg">Economy</p>
-  <p class="text-lg">550</p>
-  `;
-  createDiv.classList.add("my-5", "flex", "justify-between");
-  cardSection.appendChild(createDiv);
+function ticketCount() {
+  const ticketCount = document.getElementById("ticket-count");
+  count += 1;
+  ticketCount.innerText = count;
 }
-
-// Total Ticket Price Function
-function totalPrice() {
-  const totalId = getID("total_price");
-  const perTicket = 550;
-  totalTicketPrice += perTicket;
-  const grandTotal = totalTicketPrice;
-  getID("grand_total").innerText = grandTotal;
-  totalId.innerText = totalTicketPrice;
-}
-
-// no Duplication Function and max Ticket Handling.
+const arr = [];
 function unique(seat) {
   if (arr.includes(seat.innerText)) {
-    throw alert("Already Book, Please select another one");
+     alert("Already Book, Please select another one");
   } else if (arr.length > 3) {
-    throw alert("Sorry, you can't select more than 4 tickets");
-  } else {
-    seat.classList.add("bg-green", "text-white");
-  }
+     alert("Sorry, you can't select more than 4 tickets");
+  } 
+  
   arr.push(seat.innerText);
 }
 
+
+let totalTicketPrice = 0;
+function totalPrice() {
+  const eachTicketPrice = 550;
+  totalTicketPrice += eachTicketPrice;
+  const grandTotal = totalTicketPrice;
+  document.getElementById("grand-total").innerText = grandTotal;
+  document.getElementById("total-price").innerText = totalTicketPrice;
+}
+
+
+
 // submit Button Enable Function
-function enabledSubmit() {
-  const number = getID("input_number");
+function activeNext() {
+  const number = document.getElementById("input-number");
   number.addEventListener("keyup", function (event) {
     if (!(event.target.value === "") && arr.length > 0) {
-      getID("submit").removeAttribute("disabled");
+      document.getElementById("submit").removeAttribute("disabled");
     }
   });
 
   if (number.value.length > 0 && arr.length > 0) {
-    getID("submit").removeAttribute("disabled");
+    document.getElementById("submit").removeAttribute("disabled");
   }
 }
+const couponInput = document.getElementById("coupon-input");
+const couponBtn = document.getElementById("coupon-btn");
 
 function couponCode() {
   if (arr.length === 4) {
@@ -96,14 +74,8 @@ function couponCondition() {
 function createDiscount(per) {
   let grandTotal = totalTicketPrice;
   const discount = Math.round((totalTicketPrice * per) / 100);
-  const discountParent = getID("discount_parent");
-  discountParent.innerHTML = `
-  <h6 class="font-semibold text-lg">DiscountPrice</h6>
-  <h6 class="font-semibold text-lg">BDT <span>${discount}</span></h6>
-  `;
-  discountParent.classList.add("flex", "justify-between", "mt-2");
   grandTotal -= discount;
-  getID("grand_total").innerText = grandTotal;
-  getID("invalid_message").innerText = "";
-  getID("input_div").classList.add("hidden");
+  document.getElementById("grand-total").innerText = grandTotal;
+  document.getElementById("invalid-message").innerText = "";
+  document.getElementById("input-div").classList.add("hidden");
 }

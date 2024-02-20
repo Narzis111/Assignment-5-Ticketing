@@ -1,43 +1,43 @@
-const seats = document.querySelectorAll(".seat");
+ const seats = document.querySelectorAll(".seat");
   for (let seat of seats) {
     seat.addEventListener("click", function (event) {
-      unique(seat);
+      ticketCount();
       seatRemaining();
-      ticketUnit();
-      additionFieldInCard(seat);
+      unique(seat);
       totalPrice();
       couponCode();
       couponCondition();
-      enabledSubmit();
+      activeNext();
     });
   }
-  
-  
-  getID("submit").addEventListener("click", function (event) {
-    event.preventDefault();
-  
-    const name = getID("input_name");
-    const number = getID("input_number");
-  
-    if (!(number.value === "")) {
-      const success = getID("success");
-      success.classList.remove("hidden");
-      console.log(success);
-  
-      const sections = document.querySelectorAll("section");
-      for (let section of sections) {
-        section.classList.add("hidden");
-      }
+
+  for (const seat of seats) {
+      seat.addEventListener("click", function handleSelect(event) {
+        const ticketNumber = event.target.innerText;
+        const ticketClass = "Economy";
+        const price = 550;
+      
+        const selectedContainer = document.getElementById("ticket-row-container");
+        const tr = document.createElement("tr");
+
+        const td = document.createElement("td");
+        td.innerText = ticketNumber;
+    
+        const td1 = document.createElement("td");
+        td1.innerText = ticketClass;
+
+        const td2 = document.createElement("td");
+        td2.innerText = price;
+
+        tr.appendChild(td);
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+      
+        selectedContainer.appendChild(tr);
+
+        event.target.style.backgroundColor = "green";
+    
+      });
     }
-  });
-  
- 
-  getID("show").addEventListener("click", function () {
-    const sections = document.querySelectorAll("section");
-    for (let section of sections) {
-      section.classList.remove("hidden");
-    }
-    const success = getID("success");
-    success.classList.add("hidden");
-    window.location.reload();
-  });
+
+
