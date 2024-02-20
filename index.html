@@ -79,9 +79,9 @@
           <a href="#booking"><button class="btn border-none bg-g_color text-black">Buy Tickets</button>
           </a>
         </div>
-        <div class="absolute -bottom-60 left-1/2 -translate-x-1/2 w-full text-center h-fit">
+        <div class="absolute -bottom-60 left-1/2 -translate-x-1/2 lg:w-full w-1/2 text-center h-fit lg:mb-0 mb-28">
       
-          <div class="flex flex-col lg:flex-row lg:justify-evenly gap-5">
+          <div class="flex justify-evenly gap-5">
             <div class="flex justify-between gap-5 p-4 bg-white rounded-lg border-b-2 border-b-green-700 ">
               <div><img src="./images/people.png" alt="" srcset=""></div>
               <div>
@@ -115,7 +115,7 @@
       <h3 class="title-text text-['Raleway'] mt-32 mb-6 text-center font-extrabold text-4xl">Best offers for you</h3>
       <div class="items-center lg:flex justify-between space-x-3">
 
-        <div class="card lg:w-1/2 bg-orange-400 shadow-xl flex flex-row">
+        <div class="card lg:w-1/2 bg-orange-400 flex flex-row ">
           <div class="card-body w-1/2">
             <h2 class="card-title">15% OFF</h2>
             <p>on your next purchase <br>
@@ -133,7 +133,7 @@
           </div>
 
         </div>
-        <div class="card lg:w-1/2 bg-pink-600 shadow-xl flex flex-row">
+        <div class="card lg:w-1/2 bg-pink-600 flex flex-row">
           <div class="card-body w-1/2">
             <h2 class="card-title text-center pt-2">20% OFF</h2>
             <p>
@@ -341,13 +341,12 @@
 
            
             <div id="input-div">
-              <label class="input flex items-center gap-2 px-4 py-8 mt-3 bg-none">
+              <label class="input flex items-center gap-2 px-4 py-8 mt-3 bg-none w-full">
                 <input id="coupon-input" type="text" class="lg:grow border-0 bg-none" placeholder="Have any coupon?" disabled />
                 <button
                   id="coupon-btn"
                   class="btn bg-g_color px-6 py-2 text-white font-semibold rounded-lg -ml-20 lg:-ml-0"
-                  disabled
-                >
+                  disabled>
                   Apply
                 </button>
               </label>
